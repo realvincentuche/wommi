@@ -22,7 +22,7 @@ The local starter pages other than Home have been moved to Trash. Theme deployme
 2. Install WordPress for this domain using its own MySQL database and `wp-config.php`.
 3. Create an FTP account jailed to this site's document root. The workflow targets `./wp-content/themes/wommi/` relative to that root.
 4. Add repository Actions secrets `FTP_SERVER`, `FTP_USERNAME`, and `FTP_PASSWORD`.
-5. Push a theme change to `main` to deploy. Activate **Wommi** in Appearance > Themes, then load the homepage. Use the setup notice if pages are missing and save Settings > Permalinks if routes return 404.
+5. Push a theme change to `main`, or open Actions > Deploy theme to Namecheap > Run workflow, to deploy. Activate **Wommi** in Appearance > Themes, then load the homepage. Use the setup notice if pages are missing and save Settings > Permalinks if routes return 404.
 6. Install and configure Contact Form 7 on production when forms are needed.
 
 The workflow lints PHP before FTPS deployment and skips deployment until all three FTP secrets exist. It uses `actions/checkout@v6` and `SamKirkland/FTP-Deploy-Action@v4.4.0`. No GitHub environment is required.
