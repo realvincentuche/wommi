@@ -1,0 +1,24 @@
+:root { color-scheme: light; font-family: system-ui, sans-serif; color: #232c29; background: #f9faf7; }
+* { box-sizing: border-box; }
+body { margin: 0; line-height: 1.65; }
+a { color: inherit; text-underline-offset: .2em; }
+a:focus-visible { outline: 3px solid #467760; outline-offset: 5px; }
+.wrap { width: min(1100px, calc(100% - 40px)); margin-inline: auto; }
+.site-header, .site-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding-block: 28px; }
+.brand { font-size: 1.5rem; font-weight: 750; text-decoration: none; }
+.menu { display: flex; flex-wrap: wrap; gap: 24px; margin: 0; padding: 0; list-style: none; }
+.menu a { text-decoration: none; }
+.menu a:hover { text-decoration: underline; }
+.hero { padding-block: clamp(80px, 15vw, 180px); }
+.eyebrow { letter-spacing: .15em; text-transform: uppercase; font-size: .8rem; }
+h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.1; letter-spacing: -.04em; margin-block: 20px; }
+.hero > p:last-child { max-width: 40rem; font-size: 1.15rem; }
+.page-heading, .posts { padding-block: 64px; }
+.dynamic-content { padding-bottom: 64px; }
+.dynamic-content > *, .posts article { max-width: 760px; }
+.posts article + article { margin-top: 48px; }
+.site-footer { border-top: 1px solid #dce2da; font-size: .875rem; }
+main { min-height: 60vh; }
+img, video { max-width: 100%; height: auto; }
+.skip-link { position: absolute; left: 20px; top: -100px; padding: 12px; background: white; z-index: 100; }
+.skip-link:focus { top: 12px; }

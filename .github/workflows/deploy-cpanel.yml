@@ -1,0 +1,44 @@
+name: Deploy theme to Namecheap
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'wp-content/themes/wommi/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: PHP syntax check (fail before touching prod)
+        run: |
+          for f in $(find wp-content/themes/wommi -name '*.php'); do
+            php -l "$f" || exit 1
+          done
+
+      - name: FTP deploy theme folder
+        if: ${{ env.FTP_SERVER != '' && env.FTP_USERNAME != '' && env.FTP_PASSWORD != '' }}
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./wp-content/themes/wommi/
+          server-dir: ./wp-content/themes/wommi/
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.DS_Store
+            **/node_modules/**
+
+      - name: Production setup pending
+        if: ${{ env.FTP_SERVER == '' || env.FTP_USERNAME == '' || env.FTP_PASSWORD == '' }}
+        run: echo "::notice::Add FTP_SERVER, FTP_USERNAME and FTP_PASSWORD repository secrets to enable deployment to wommi.org."
