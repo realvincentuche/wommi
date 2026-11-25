@@ -10,9 +10,11 @@ Classic WordPress starter theme for https://wommi.org.
 - Local database: SQLite through `sqlite-database-integration`, stored at `wp-content/database/.ht.sqlite`.
 - Local login details are kept outside this repository in `C:\Users\hp\Wordpress\_shared\local-credentials\wommi.json`.
 
-The theme creates Home, About, and Contact on activation without overwriting existing pages, and sets Home as the static front page. Activation setup runs on the next WordPress load. If production pages are missing, use the dashboard's **Create pages now** link.
+The theme creates only Home on activation without overwriting an existing page, and sets it as the static front page. Activation setup runs on the next WordPress load. If Home is missing on production, use the dashboard's **Create pages now** link.
 
-The starter homepage layout lives in PHP. Nonempty page content renders below the template through `the_content()`. Blog templates use the WordPress Loop. Use Contact Form 7 for forms, with its shortcode in page content.
+The homepage currently displays only "Coming soon", pending the supplied mockup. Navigation is hidden. Generic page and blog templates remain available for future development. Use Contact Form 7 for future forms, with its shortcode in page content.
+
+The local starter pages other than Home have been moved to Trash. Theme deployment does not change production database pages; move any existing unwanted production pages to Trash in wp-admin.
 
 ## Production setup
 

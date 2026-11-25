@@ -20,14 +20,14 @@ add_action( 'wp_enqueue_scripts', 'wommi_assets' );
 
 function wommi_menu_fallback() {
 	echo '<ul class="menu">';
-	foreach ( array( '' => __( 'Home', 'wommi' ), 'about' => __( 'About', 'wommi' ), 'contact' => __( 'Contact', 'wommi' ) ) as $slug => $label ) {
+	foreach ( array( '' => __( 'Home', 'wommi' ) ) as $slug => $label ) {
 		echo '<li><a href="' . esc_url( home_url( '/' . $slug . ( $slug ? '/' : '' ) ) ) . '">' . esc_html( $label ) . '</a></li>';
 	}
 	echo '</ul>';
 }
 
 function wommi_required_pages() {
-	return array( 'home' => __( 'Home', 'wommi' ), 'about' => __( 'About', 'wommi' ), 'contact' => __( 'Contact', 'wommi' ) );
+	return array( 'home' => __( 'Home', 'wommi' ) );
 }
 
 function wommi_seed_pages() {
